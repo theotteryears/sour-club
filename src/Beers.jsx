@@ -21,7 +21,7 @@ export default function Beers() {
 						className="max-w-sm rounded-lg shadow-lg overflow-hidden bg-white"
 					>
 						{/* Beer Image */}
-						<div className="h-48 bg-gray-200">
+						<div className="h-48 bg-white">
 							<img
 								src={sour.imageURL}
 								alt={sour.name}
@@ -30,12 +30,14 @@ export default function Beers() {
 						</div>
 
 						{/* Card Content */}
-						<div className="p-4">
+						<div className="p-4 text-center">
 							<h2 className="text-2xl font-bold text-gray-800">{sour.name}</h2>
 							<p className="text-gray-600 mt-2">Brewery: {sour.brewery}</p>
 							<p className="text-gray-600">Sourness: {sour.sourness}</p>
 							<p className="text-gray-600">Design: {sour.design}</p>
-							<p className="text-gray-600">Rating: {sour["Je ne sais quoi"]}</p>
+							<p className="text-gray-600">
+								Je ne sais quoi: {sour["Je ne sais quoi"]}
+							</p>
 						</div>
 					</div>
 				);
