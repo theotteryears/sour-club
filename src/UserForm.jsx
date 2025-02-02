@@ -1,11 +1,28 @@
+import { useMutation } from "@tanstack/react-query";
+import supabase from "./supabase";
 import { useId } from "react";
 
-export default function AddBeerForm() {
+export default function AddSourForm() {
 	const nameId = useId();
 	const sournessId = useId();
 	const ratingId = useId();
 	const breweryId = useId();
 	const photoId = useId();
+
+	const addSour = async (data) => {
+		const { data: sour } = await supabase.from("sours").insert(data);
+		return sour;
+	};
+
+	const mutation = useMutation({
+		mutationFn: (data) => addSour(data),
+		onSuccess: () => {
+			console.log("Sour added!");
+		},
+		onError: (error) => {
+			console.error("Error adding sour:", error);
+		},
+	});
 
 	function handleSubmit(event) {
 		event.preventDefault;
@@ -14,11 +31,7 @@ export default function AddBeerForm() {
 		const rating = new FormData(event.target).get("rating");
 		const brewery = new FormData(event.target).get("brewery");
 		const photo = new FormData(event.target).get("filename");
-		console.log(name);
-		console.log(sourness);
-		console.log(rating);
-		console.log(brewery);
-		console.log(photo);
+		mutation.mutate({ name, sourness, rating, brewery });
 	}
 
 	return (
@@ -117,7 +130,7 @@ export default function AddBeerForm() {
 				<div className="flex justify-center">
 					<input
 						type="submit"
-						value="Add Beer"
+						value="Add Sour"
 						className="w-full py-2 px-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
 					/>
 				</div>
