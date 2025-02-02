@@ -2,11 +2,7 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import supabase from "./supabase";
 
 const fetchSours = async () => {
-	const { data: sours } = await supabase
-		.from("sours")
-		.select(
-			'id, name, sourness, design, "Je ne sais quoi", imageURL, breweries(id, name)',
-		);
+	const { data: sours } = await supabase.from("sours").select();
 	return sours;
 };
 
@@ -36,9 +32,7 @@ export default function Beers() {
 						{/* Card Content */}
 						<div className="p-4">
 							<h2 className="text-2xl font-bold text-gray-800">{sour.name}</h2>
-							<p className="text-gray-600 mt-2">
-								Brewery: {sour.breweries.name}
-							</p>
+							<p className="text-gray-600 mt-2">Brewery: {sour.brewery}</p>
 							<p className="text-gray-600">Sourness: {sour.sourness}</p>
 							<p className="text-gray-600">Design: {sour.design}</p>
 							<p className="text-gray-600">Rating: {sour["Je ne sais quoi"]}</p>

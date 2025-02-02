@@ -3,14 +3,14 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Beers from "./Beers.jsx";
-import AddBeerForm from "./UserForm.jsx";
+import AddSourForm from "./AddSourForm.jsx";
 import Navbar from "./Navbar.jsx";
 
 function App() {
 	return (
 		<>
 			<Navbar />
-			<AddBeerForm />
+			<AddSourForm />
 			<Beers />
 		</>
 	);
