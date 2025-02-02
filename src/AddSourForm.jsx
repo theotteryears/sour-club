@@ -18,12 +18,13 @@ export default function AddSourForm() {
 	});
 
 	function handleSubmit(event) {
-		// event.preventDefault();
+		event.preventDefault();
 		const formData = new FormData(event.target);
 		const sourName = formData.get("sourname");
 		const design = formData.get("design");
 		const sourness = formData.get("sourness");
 		const brewery = formData.get("brewery");
+		const rating = formData.get("rating");
 
 		if (!sourName || !design || !sourness || !brewery) {
 			alert("Please fill out all fields.");
@@ -35,6 +36,7 @@ export default function AddSourForm() {
 			design: design,
 			sourness: sourness,
 			brewery: brewery,
+			"Je ne sais quoi": rating,
 		});
 	}
 
@@ -94,6 +96,30 @@ export default function AddSourForm() {
 							className="p-2 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
 							placeholder="Enter sourness level from 1 to 10"
 						/>
+					</div>
+
+					{/* Je ne sais quoi */}
+					<div>
+						<label
+							htmlFor="rating"
+							className="block text-sm font-medium text-gray-700"
+						>
+							Je ne sais quoi
+						</label>
+						<select
+							name="rating"
+							id="rating"
+							className="p-2 mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+						>
+							<option value="Mon Dieu!">Mon Dieu!</option>
+							<option value="Incroyable">Incroyable</option>
+							<option value="Très bon">Très bon</option>
+							<option value="Tout à fait bien">Tout à fait bien</option>
+							<option value="Assez mauvais">Assez mauvais</option>
+							<option value="Tout simplement horrible">
+								Tout simplement horrible
+							</option>
+						</select>
 					</div>
 
 					{/* Brewery */}
