@@ -1,6 +1,6 @@
 import { useId } from "react";
 
-export default function UserForm() {
+export default function AddBeerForm() {
 	const nameId = useId();
 	const sournessId = useId();
 	const ratingId = useId();
