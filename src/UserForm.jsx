@@ -102,7 +102,7 @@ export default function AddSourForm() {
 						Brewery:
 					</label>
 					<input
-						type=""
+						type="text"
 						name="brewery"
 						placeholder="Enter the brewery name"
 						id="brewery"
