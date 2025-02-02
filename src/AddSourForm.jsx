@@ -18,7 +18,7 @@ export default function AddSourForm() {
 	});
 
 	function handleSubmit(event) {
-		event.preventDefault();
+		// event.preventDefault();
 		const formData = new FormData(event.target);
 		const sourName = formData.get("sourname");
 		const design = formData.get("design");
