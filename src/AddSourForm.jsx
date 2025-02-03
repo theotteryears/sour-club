@@ -18,13 +18,14 @@ export default function AddSourForm() {
 	});
 
 	function handleSubmit(event) {
-		event.preventDefault();
+		// event.preventDefault();
 		const formData = new FormData(event.target);
 		const sourName = formData.get("sourname");
 		const design = formData.get("design");
 		const sourness = formData.get("sourness");
 		const brewery = formData.get("brewery");
 		const rating = formData.get("rating");
+		const imageURL = formData.get("photo");
 
 		if (!sourName || !design || !sourness || !brewery) {
 			alert("Please fill out all fields.");
@@ -37,6 +38,7 @@ export default function AddSourForm() {
 			sourness: sourness,
 			brewery: brewery,
 			"Je ne sais quoi": rating,
+			imageURL: imageURL,
 		});
 	}
 

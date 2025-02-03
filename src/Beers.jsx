@@ -36,7 +36,7 @@ export default function Beers() {
 							<p className="text-gray-600">Sourness: {sour.sourness}</p>
 							<p className="text-gray-600">Design: {sour.design}</p>
 							<p className="text-gray-600">
-								Je ne sais quoi: {sour["Je ne sais quoi"]}
+								Je ne sais quoi: {sour.jenesaisquoi}
 							</p>
 						</div>
 					</div>
