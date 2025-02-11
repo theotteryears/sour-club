@@ -61,8 +61,11 @@ export default function AddBeerForm() {
 		const formData = new FormData(event.target);
 		const beerName = formData.get("name");
 		const imageFile = formData.get("filename");
+		const sourness = formData.get("sourness");
+		const design = formData.get("design");
+		const brewery = formData.get("brewery");
 
-		if (!beerName || !imageFile) {
+		if (!beerName || !imageFile || !sourness || !design || !brewery) {
 			alert("Please fill out all fields.");
 			return;
 		}
@@ -70,6 +73,9 @@ export default function AddBeerForm() {
 		// Pass only the necessary data to the mutation
 		mutation.mutate({
 			name: beerName,
+			sourness: Number.parseInt(sourness, 10),
+			design: Number.parseInt(design, 10),
+			brewery,
 			imageFile, // Image file will be handled in the addBeer function
 		});
 	}
@@ -131,6 +137,60 @@ export default function AddBeerForm() {
 						name="name"
 						id="name"
 						placeholder="Enter the beer name"
+						autoComplete="off"
+						className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+						required
+					/>
+				</div>
+
+				<div className="mb-4">
+					<label
+						htmlFor="sourness"
+						className="block text-lg font-medium text-gray-700 mb-2"
+					>
+						Sourness:
+					</label>
+					<input
+						type="text"
+						name="sourness"
+						id="sourness"
+						placeholder="Rate the sourness out of 10"
+						autoComplete="off"
+						className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+						required
+					/>
+				</div>
+
+				<div className="mb-4">
+					<label
+						htmlFor="design"
+						className="block text-lg font-medium text-gray-700 mb-2"
+					>
+						Design:
+					</label>
+					<input
+						type="text"
+						name="design"
+						id="design"
+						placeholder="Rate the design out of 10"
+						autoComplete="off"
+						className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+						required
+					/>
+				</div>
+
+				<div className="mb-4">
+					<label
+						htmlFor="brewery"
+						className="block text-lg font-medium text-gray-700 mb-2"
+					>
+						Brewery:
+					</label>
+					<input
+						type="text"
+						name="brewery"
+						id="brewery"
+						placeholder="Enter the brewery name"
 						autoComplete="off"
 						className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 						required
