@@ -90,7 +90,7 @@ export default function AddBeerForm() {
 			<div className="text-center mb-6">
 				<Link
 					to="/"
-					className="py-2 px-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+					className="py-2 px-4 bg-pink-500 text-white font-bold rounded-lg hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
 				>
 					Home
 				</Link>
@@ -98,7 +98,7 @@ export default function AddBeerForm() {
 			<div className="text-center mb-6">
 				<Link
 					to="/list"
-					className="py-2 px-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+					className="py-2 px-4 bg-indigo-500 text-white font-bold rounded-lg hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
 				>
 					Back to Beer List
 				</Link>
