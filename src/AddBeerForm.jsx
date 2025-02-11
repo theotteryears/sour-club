@@ -64,6 +64,7 @@ export default function AddBeerForm() {
 		const sourness = formData.get("sourness");
 		const design = formData.get("design");
 		const brewery = formData.get("brewery");
+		const jenesaisquoi = formData.get("jenesaisquoi");
 
 		if (!beerName || !imageFile || !sourness || !design || !brewery) {
 			alert("Please fill out all fields.");
@@ -76,6 +77,7 @@ export default function AddBeerForm() {
 			sourness: Number.parseInt(sourness, 10),
 			design: Number.parseInt(design, 10),
 			brewery,
+			jenesaisquoi,
 			imageFile, // Image file will be handled in the addBeer function
 		});
 	}
@@ -195,6 +197,31 @@ export default function AddBeerForm() {
 						className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
 						required
 					/>
+				</div>
+
+				<div className="mb-4">
+					<label
+						htmlFor="jenesaisquoi"
+						className="block text-lg font-medium text-gray-700 mb-2"
+					>
+						Je ne sais quoi:
+					</label>
+					<select
+						name="jenesaisquoi"
+						id="jenesaisquoi"
+						className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+						required
+					>
+						<option value="">Select an option</option>
+						<option value="Mon Dieu!">Mon Dieu!</option>
+						<option value="Incroyable">Incroyable</option>
+						<option value="Très bon">Très bon</option>
+						<option value="Tout à fait bien">Tout à fait bien</option>
+						<option value="Assez mauvais">Assez mauvais</option>
+						<option value="Tout simplement horrible">
+							Tout simplement horrible
+						</option>
+					</select>
 				</div>
 
 				<div className="flex justify-center">
