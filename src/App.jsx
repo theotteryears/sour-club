@@ -1,29 +1,35 @@
 import "./App.css";
 import { StrictMode } from "react";
+import { ErrorBoundary } from "react-error-boundary";
 import { createRoot } from "react-dom/client";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Beers from "./Beers.jsx";
-import AddSourForm from "./AddSourForm.jsx";
-import Navbar from "./Navbar.jsx";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import AddSourForm from "./AddBeerForm";
+import BeerList from "./BeerList";
+import Welcome from "./Welcome";
+
+const queryClient = new QueryClient();
 
 function App() {
 	return (
-		<>
-			<Navbar />
-			<AddSourForm />
-			<Beers />
-		</>
+		<Router>
+			<Routes>
+				<Route path="/" element={<Welcome />} />
+				<Route path="/list" element={<BeerList />} />
+				<Route path="/add" element={<AddSourForm />} />
+			</Routes>
+		</Router>
 	);
 }
-
-const queryClient = new QueryClient();
 
 function AppSetup() {
 	return (
 		<StrictMode>
-			<QueryClientProvider client={queryClient}>
-				<App />
-			</QueryClientProvider>
+			<ErrorBoundary fallback={<p>An error has occurred.</p>}>
+				<QueryClientProvider client={queryClient}>
+					<App />
+				</QueryClientProvider>
+			</ErrorBoundary>
 		</StrictMode>
 	);
 }
