@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import supabase from "./supabase";
+import { Link } from "react-router-dom";
 
 export default function EditBeerForm() {
 	const { beerId } = useParams();
@@ -152,9 +153,26 @@ export default function EditBeerForm() {
 	// JSX for form
 	return (
 		<div className="py-6">
-			<h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
+			<h1 className="text-5xl font-bold text-center text-gray-800 mb-6">
 				Edit Beer
 			</h1>
+
+			<div className="text-center mb-6">
+				<Link
+					to="/"
+					className="py-2 px-4 bg-pink-500 text-white font-bold rounded-lg hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+				>
+					Home
+				</Link>
+			</div>
+			<div className="text-center mb-6">
+				<Link
+					to="/list"
+					className="py-2 px-4 bg-indigo-500 text-white font-bold rounded-lg hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+				>
+					Back to Beer List
+				</Link>
+			</div>
 
 			<form
 				onSubmit={handleSubmit}

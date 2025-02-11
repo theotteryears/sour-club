@@ -12,7 +12,7 @@ const Welcome = () => {
 				<title>Welcome to Sour Club</title>
 			</Helmet>
 			<div className="text-center py-12">
-				<h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-indigo-500 p-3">
+				<h1 className="text-6xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-indigo-500 p-3">
 					Welcome to Sour Club
 				</h1>
 				{/* Use background image */}
