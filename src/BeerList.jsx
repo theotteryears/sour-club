@@ -3,7 +3,10 @@ import supabase from "./supabase";
 import { Link } from "react-router-dom";
 
 const fetchBeers = async () => {
-	const { data, error } = await supabase.from("sours").select("*");
+	const { data, error } = await supabase
+		.from("sours")
+		.select("*")
+		.order("updated_at", { ascending: false });
 
 	if (error) {
 		throw new Error(error.message);
@@ -39,8 +42,8 @@ export default function BeerList() {
 	}
 
 	return (
-		<div className="py-6">
-			<h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
+		<div className="p-6">
+			<h1 className="text-6xl font-bold text-center text-gray-800 mb-6">
 				Beer List
 			</h1>
 
@@ -85,7 +88,7 @@ export default function BeerList() {
 							</p>
 						</div>
 
-						<div className="text-center mb-6">
+						<div className="text-center mt-6 mb-2">
 							<Link
 								to={`/${beer.id}`}
 								className="py-2 px-4 bg-indigo-500 text-white font-bold rounded-lg hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -93,6 +96,16 @@ export default function BeerList() {
 								Edit info
 							</Link>
 						</div>
+						<p className="text-gray-500 text-center text-xs p-3">
+							Updated on:{" "}
+							{new Date(beer.updated_at).toLocaleString("en-GB", {
+								hour: "2-digit",
+								minute: "2-digit",
+								day: "2-digit",
+								month: "2-digit",
+								year: "numeric",
+							})}
+						</p>
 					</div>
 				))}
 			</div>

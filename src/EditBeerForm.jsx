@@ -112,6 +112,17 @@ export default function EditBeerForm() {
 		},
 	});
 
+	// Delete beer function
+	const deleteBeer = async () => {
+		const { error } = await supabase.from("sours").delete().eq("id", id);
+
+		if (error) {
+			console.error("Error deleting beer:", error);
+		} else {
+			navigate("/list"); // Redirect after successful deletion
+		}
+	};
+
 	// Handle form submission
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -208,6 +219,8 @@ export default function EditBeerForm() {
 						name="sourness"
 						id="sourness"
 						value={formData.sourness}
+						min="0"
+						max="10"
 						onChange={(e) =>
 							setFormData({ ...formData, sourness: e.target.value })
 						}
@@ -229,6 +242,8 @@ export default function EditBeerForm() {
 						name="design"
 						id="design"
 						value={formData.design}
+						min="0"
+						max="10"
 						onChange={(e) =>
 							setFormData({ ...formData, design: e.target.value })
 						}
@@ -288,8 +303,18 @@ export default function EditBeerForm() {
 					<input
 						type="submit"
 						value="Update Beer"
-						className="w-full py-2 px-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700"
+						className="w-full py-2 px-4 bg-indigo-500 text-white font-bold rounded-lg hover:bg-indigo-600"
 					/>
+				</div>
+				{/* Delete Button */}
+				<div className="flex justify-center mt-6">
+					<button
+						type="button"
+						onClick={deleteBeer}
+						className="w-full py-2 px-4 bg-red-500 text-white font-bold rounded-lg hover:bg-red-600"
+					>
+						Delete Beer
+					</button>
 				</div>
 			</form>
 		</div>

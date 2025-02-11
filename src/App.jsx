@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import AddSourForm from "./AddBeerForm";
 import BeerList from "./BeerList";
 import Welcome from "./Welcome";
-import BeerInfo from "./BeerInfo";
+import BeerInfo from "./EditBeerForm";
 
 const queryClient = new QueryClient();
 
