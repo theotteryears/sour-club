@@ -9,7 +9,7 @@ const Welcome = () => {
 			{/* Use background image */}
 			<div
 				className="bg-cover bg-center my-8 w-64 h-64 mx-auto border-gray-200 rounded-2xl"
-				style={{ backgroundImage: 'url("./src/assets/beer.png")' }}
+				style={{ backgroundImage: 'url("public/beer.png")' }}
 			/>
 			<div className="mx-auto">
 				<p className="mt-4 text-lg text-gray-600 mx-auto">
