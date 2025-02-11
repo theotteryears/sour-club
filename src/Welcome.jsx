@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Welcome = () => {
 	return (
 		<div className="text-center py-12">
-			<h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-indigo-500 ">
+			<h1 className="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-indigo-500 p-3">
 				Welcome to Sour Club
 			</h1>
 			{/* Use background image */}
@@ -11,9 +11,11 @@ const Welcome = () => {
 				className="bg-cover bg-center my-8 w-64 h-64 mx-auto border-gray-200 rounded-2xl"
 				style={{ backgroundImage: 'url("./src/assets/beer.png")' }}
 			/>
-			<p className="mt-4 text-lg text-gray-600">
-				Explore the world of sour beers and join the club!
-			</p>
+			<div className="mx-auto">
+				<p className="mt-4 text-lg text-gray-600 mx-auto">
+					Explore the world of sours and join the club!
+				</p>
+			</div>
 
 			{/* Add links to BeerList and AddSourForm */}
 			<div className="mt-6 space-x-4">
