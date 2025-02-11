@@ -3,13 +3,10 @@ import supabase from "./supabase";
 import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 
 export default function AddBeerForm() {
-	// Initialize the navigate function
 	const navigate = useNavigate();
 
-	// Function to handle the beer addition logic
 	const addBeer = async (data) => {
 		if (data.imageFile) {
-			// Upload the image to Supabase storage
 			const { data: uploadData, error: uploadError } = await supabase.storage
 				.from("beers")
 				.upload(`images/${data.imageFile.name}`, data.imageFile, {
@@ -21,16 +18,13 @@ export default function AddBeerForm() {
 				throw new Error(`Error uploading image: ${uploadError.message}`);
 			}
 
-			// Get the public URL of the uploaded image
 			const { data: publicUrlData } = supabase.storage
 				.from("beers")
 				.getPublicUrl(uploadData.path);
 
-			// Add the public URL to the data object
 			data.imageUrl = publicUrlData.publicUrl;
 		}
 
-		// Insert beer data into the database, including the imageUrl
 		const { data: beer, error: insertError } = await supabase
 			.from("sours")
 			.insert([data]);
@@ -42,20 +36,17 @@ export default function AddBeerForm() {
 		return beer;
 	};
 
-	// React Query mutation setup for adding a beer
 	const mutation = useMutation({
 		mutationFn: (data) => addBeer(data),
 		onSuccess: () => {
 			console.log("Beer added!");
-			// Redirect to the beer list after successful addition
-			navigate("/list"); // Navigate to the Beer List page
+			navigate("/list");
 		},
 		onError: (error) => {
 			console.error("Error adding beer:", error);
 		},
 	});
 
-	// Handle form submission
 	function handleSubmit(event) {
 		event.preventDefault();
 		const formData = new FormData(event.target);
@@ -71,14 +62,13 @@ export default function AddBeerForm() {
 			return;
 		}
 
-		// Pass only the necessary data to the mutation
 		mutation.mutate({
 			name: beerName,
 			sourness: Number.parseInt(sourness, 10),
 			design: Number.parseInt(design, 10),
 			brewery,
 			jenesaisquoi,
-			imageFile, // Image file will be handled in the addBeer function
+			imageFile,
 		});
 	}
 
@@ -88,7 +78,6 @@ export default function AddBeerForm() {
 				Add a New Beer
 			</h1>
 
-			{/* Link to navigate back to Beer List */}
 			<div className="text-center mb-6">
 				<Link
 					to="/"
@@ -106,7 +95,6 @@ export default function AddBeerForm() {
 				</Link>
 			</div>
 
-			{/* Form for adding beer */}
 			<form
 				onSubmit={handleSubmit}
 				className="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-md pb-8"

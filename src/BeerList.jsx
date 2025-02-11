@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import supabase from "./supabase";
 import { Link } from "react-router-dom";
 
-// Fetch function to get beers from Supabase
 const fetchBeers = async () => {
 	const { data, error } = await supabase.from("sours").select("*");
 
@@ -45,7 +44,6 @@ export default function BeerList() {
 				Beer List
 			</h1>
 
-			{/* Link to Add Beer form */}
 			<div className="text-center mb-6">
 				<Link
 					to="/"
@@ -85,6 +83,15 @@ export default function BeerList() {
 							<p className="text-pink-500">
 								Je ne sais quoi: {beer.jenesaisquoi}
 							</p>
+						</div>
+
+						<div className="text-center mb-6">
+							<Link
+								to={`/${beer.id}`}
+								className="py-2 px-4 bg-indigo-500 text-white font-bold rounded-lg hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+							>
+								Edit info
+							</Link>
 						</div>
 					</div>
 				))}

@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import AddSourForm from "./AddBeerForm";
 import BeerList from "./BeerList";
 import Welcome from "./Welcome";
+import BeerInfo from "./BeerInfo";
 
 const queryClient = new QueryClient();
 
@@ -17,6 +18,7 @@ function App() {
 				<Route path="/" element={<Welcome />} />
 				<Route path="/list" element={<BeerList />} />
 				<Route path="/add" element={<AddSourForm />} />
+				<Route path="/:beerId" element={<BeerInfo />} />
 			</Routes>
 		</Router>
 	);
