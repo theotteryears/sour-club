@@ -79,12 +79,15 @@ export default function BeerList() {
 							/>
 						)}
 						<div className="p-4 text-center">
-							<h2 className="text-2xl font-bold text-gray-600">{beer.name}</h2>
-							<p className="text-indigo-500 mt-2">Brewery: {beer.brewery}</p>
+							<h2 className="text-3xl font-bold text-gray-600">{beer.name}</h2>
+							<p className="text-gray-600 mt-2">
+								Brewery: <span className="text-indigo-500">{beer.brewery}</span>
+							</p>
 							<p className="text-gray-600">Sourness: {beer.sourness}</p>
 							<p className="text-gray-600">Design: {beer.design}</p>
-							<p className="text-pink-500">
-								Je ne sais quoi: {beer.jenesaisquoi}
+							<p className="text-gray-600">
+								Je ne sais quoi:{" "}
+								<span className="text-pink-500">{beer.jenesaisquoi}</span>
 							</p>
 						</div>
 
